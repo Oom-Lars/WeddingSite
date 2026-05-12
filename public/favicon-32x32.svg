@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Background circle for better visibility -->
+  <circle cx="16" cy="16" r="15" fill="#3D4A2A" opacity="0.1"/>
+  
+  <!-- Main ring band -->
+  <circle cx="16" cy="16" r="11" fill="none" stroke="#C4B59C" stroke-width="2.5"/>
+  
+  <!-- Inner ring detail -->
+  <circle cx="16" cy="16" r="8.5" fill="none" stroke="#A89578" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Diamond/gem at top -->
+  <path d="M16 6 L18.5 10 L16 14 L13.5 10 Z" fill="#EFE9D9" stroke="#A89578" stroke-width="0.8"/>
+  
+  <!-- Ring highlights -->
+  <circle cx="16" cy="16" r="11" fill="none" stroke="#EFE9D9" stroke-width="0.8" opacity="0.5" stroke-dasharray="3,6" stroke-dashoffset="1"/>
+  
+  <!-- Small accent gems -->
+  <circle cx="11.5" cy="11.5" r="1" fill="#C4B59C"/>
+  <circle cx="20.5" cy="11.5" r="1" fill="#C4B59C"/>
+  <circle cx="11.5" cy="20.5" r="1" fill="#A89578"/>
+  <circle cx="20.5" cy="20.5" r="1" fill="#A89578"/>
+</svg>

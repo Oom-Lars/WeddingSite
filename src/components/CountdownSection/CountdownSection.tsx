@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useCountdown } from '../../hooks/useCountdown'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import './CountdownSection.css'
@@ -9,23 +9,26 @@ interface FlipCardProps {
 }
 
 function FlipCard({ value, label }: FlipCardProps) {
-  const [prevValue, setPrevValue] = useState(value)
+  const [displayValue, setDisplayValue] = useState(value)
   const [flipping, setFlipping] = useState(false)
+  const prevValueRef = useRef(value)
 
   useEffect(() => {
-    if (value !== prevValue) {
+    if (value !== prevValueRef.current) {
       setFlipping(true)
-      const t = setTimeout(() => {
-        setPrevValue(value)
+      const timer = setTimeout(() => {
+        setDisplayValue(value)
         setFlipping(false)
-      }, 320)
-      return () => clearTimeout(t)
+        prevValueRef.current = value
+      }, 160) // Half the animation duration
+      
+      return () => clearTimeout(timer)
     }
-  }, [value, prevValue])
+  }, [value])
 
   return (
     <div className={`flip-card ${flipping ? 'flip-card--flipping' : ''}`}>
-      <span className="flip-card__value">{String(value).padStart(2, '0')}</span>
+      <span className="flip-card__value">{String(displayValue).padStart(2, '0')}</span>
       <span className="flip-card__label">{label}</span>
     </div>
   )
