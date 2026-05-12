@@ -1,90 +1,73 @@
+import useScrollReveal from '../../hooks/useScrollReveal'
+import { images } from '../../data/images'
 import './DressCodeSection.css'
 
 export interface DressCodeColumn {
   label: string
   style: string
-  iconSvg: string
 }
 
 interface DressCodeSectionProps {
   dressStyle: string
-  columns: [DressCodeColumn, DressCodeColumn]
+  description: string
+  columns: readonly [DressCodeColumn, DressCodeColumn]
+  palette: readonly string[]
+  avoid: string
 }
 
-function HimIcon() {
-  return (
-    <svg viewBox="0 0 64 80" className="dresscode__col-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-      {/* Suit jacket silhouette */}
-      <rect x="20" y="2" width="24" height="28" rx="4" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="1.5"/>
-      {/* Lapels */}
-      <path d="M32,8 L24,20 L32,18 L40,20 L32,8Z" fill="currentColor" opacity="0.4"/>
-      {/* Tie */}
-      <path d="M30,18 L32,30 L34,18 L32,14Z" fill="currentColor" opacity="0.6"/>
-      {/* Body */}
-      <path d="M16,30 Q10,35 10,50 L54,50 Q54,35 48,30 L40,28 L32,32 L24,28Z" fill="currentColor" opacity="0.2" stroke="currentColor" strokeWidth="1.2"/>
-      {/* Legs */}
-      <rect x="16" y="50" width="13" height="28" rx="3" fill="currentColor" opacity="0.2" stroke="currentColor" strokeWidth="1.2"/>
-      <rect x="35" y="50" width="13" height="28" rx="3" fill="currentColor" opacity="0.2" stroke="currentColor" strokeWidth="1.2"/>
-      {/* Head */}
-      <circle cx="32" cy="0" r="0" fill="none"/>
-    </svg>
-  )
-}
+export default function DressCodeSection({
+  dressStyle,
+  description,
+  columns,
+  palette,
+  avoid,
+}: DressCodeSectionProps) {
+  const headerRef = useScrollReveal<HTMLDivElement>({ threshold: 0.2 })
+  const gridRef = useScrollReveal<HTMLDivElement>({ threshold: 0.15 })
 
-function HerIcon() {
-  return (
-    <svg viewBox="0 0 64 80" className="dresscode__col-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-      {/* Dress bodice */}
-      <path d="M22,2 Q32,0 42,2 L44,28 Q38,26 32,26 Q26,26 20,28Z" fill="currentColor" opacity="0.2" stroke="currentColor" strokeWidth="1.5"/>
-      {/* Dress skirt flare */}
-      <path d="M20,28 Q10,35 8,55 L56,55 Q54,35 44,28 Q38,26 32,26 Q26,26 20,28Z" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="1.5"/>
-      {/* Skirt hem detail */}
-      <path d="M8,55 Q20,62 32,60 Q44,62 56,55" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.4"/>
-      {/* Waist detail */}
-      <path d="M20,28 Q32,32 44,28" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.5"/>
-      {/* Neckline */}
-      <path d="M24,2 Q32,8 40,2" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.4"/>
-    </svg>
-  )
-}
-
-export default function DressCodeSection({ dressStyle, columns }: DressCodeSectionProps) {
   return (
     <section className="dresscode">
       <div className="dresscode__inner">
-        <div className="dresscode__header">
-          <p className="dresscode__eyebrow">Attire</p>
-          <h2 className="dresscode__title">Dress Code</h2>
+        <header className="dresscode__header reveal" ref={headerRef}>
+          <span className="eyebrow eyebrow--light">Attire</span>
+          <h2 className="dresscode__title">
+            Dress for <em>a garden</em>
+          </h2>
           <p className="dresscode__style">{dressStyle}</p>
-          <hr className="dresscode__divider" />
-        </div>
+        </header>
 
-        <div className="dresscode__columns">
-          {/* Him column */}
-          <div className="dresscode__col">
-            <div className="dresscode__col-icon-wrap">
-              <HimIcon />
+        <div className="dresscode__grid reveal" ref={gridRef}>
+          <div className="dresscode__mood">
+            <div className="dresscode__mood-image">
+              <img src={images.dressMood} alt="Dress code mood — earth-toned florals" loading="lazy" />
             </div>
-            <h3 className="dresscode__col-label">{columns[0].label}</h3>
-            <p className="dresscode__col-style">{columns[0].style}</p>
+            <div className="dresscode__palette" aria-label="Recommended colour palette">
+              {palette.map((c, i) => (
+                <span
+                  key={c}
+                  className="dresscode__swatch"
+                  style={{ background: c, animationDelay: `${i * 0.08}s` }}
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Gold vertical divider */}
-          <div className="dresscode__sep" aria-hidden="true" />
+          <div className="dresscode__notes">
+            <p className="dresscode__description">{description}</p>
 
-          {/* Her column */}
-          <div className="dresscode__col">
-            <div className="dresscode__col-icon-wrap">
-              <HerIcon />
+            <div className="dresscode__cols">
+              {columns.map((c) => (
+                <div key={c.label} className="dresscode__col">
+                  <h3 className="dresscode__col-label">{c.label}</h3>
+                  <p className="dresscode__col-style">{c.style}</p>
+                </div>
+              ))}
             </div>
-            <h3 className="dresscode__col-label">{columns[1].label}</h3>
-            <p className="dresscode__col-style">{columns[1].style}</p>
+
+            <p className="dresscode__avoid">{avoid}</p>
           </div>
         </div>
-
-        <p className="dresscode__note">
-          Please avoid white, ivory, or black. We'd love to see you in earth tones and garden hues.
-        </p>
       </div>
     </section>
   )

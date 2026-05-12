@@ -1,3 +1,4 @@
+import useScrollReveal from '../../hooks/useScrollReveal'
 import './EventDetailsSection.css'
 
 export interface EventInfo {
@@ -8,78 +9,76 @@ export interface EventInfo {
   mapsUrl: string
 }
 
-interface EventCardProps {
-  event: EventInfo
-}
-
-function EventIcon({ type }: { type: EventInfo['type'] }) {
-  if (type === 'ceremony') {
-    return (
-      <svg viewBox="0 0 24 24" className="event-card__icon-svg" aria-hidden="true">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    )
-  }
+function EventCard({ event, index }: { event: EventInfo; index: number }) {
+  const ref = useScrollReveal<HTMLElement>({ threshold: 0.2 })
   return (
-    <svg viewBox="0 0 24 24" className="event-card__icon-svg" aria-hidden="true">
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
-    </svg>
-  )
-}
+    <article ref={ref} className={`event reveal reveal-delay-${index + 1}`}>
+      <span className="event__type">
+        {event.type === 'ceremony' ? 'The Ceremony' : 'The Reception'}
+      </span>
 
-function EventCard({ event }: EventCardProps) {
-  return (
-    <div className="event-card">
-      <div className="event-card__icon">
-        <EventIcon type={event.type} />
+      <h3 className="event__venue">{event.venue}</h3>
+
+      <div className="event__time">
+        <span className="event__time-value">{event.time}</span>
+        <span className="event__time-rule" aria-hidden="true" />
       </div>
-      <p className="event-card__type">{event.type === 'ceremony' ? 'Ceremony' : 'Reception'}</p>
-      <h3 className="event-card__venue">{event.venue}</h3>
-      <p className="event-card__time">{event.time}</p>
-      <p className="event-card__address">{event.address}</p>
-      <div className="event-card__map">
-        <iframe
-          title={`Map for ${event.venue}`}
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.9!3d40.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM!5e0!3m2!1sen!2sus!4v1"
-          width="100%"
-          height="180"
-          style={{ border: 0 }}
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin"
-          referrerPolicy="no-referrer"
-          aria-label={`Map showing location of ${event.venue}`}
-        />
-      </div>
+
+      <p className="event__address">{event.address}</p>
+
       <a
         href={event.mapsUrl}
-        className="event-card__directions"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Get directions to ${event.venue}`}
+        className="event__link"
+        aria-label={`Open ${event.venue} in Google Maps`}
       >
-        Get Directions
+        <span>Open in Maps</span>
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path
+            d="M3 13 13 3M6 3h7v7"
+            stroke="currentColor"
+            strokeWidth="1.25"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </a>
-    </div>
+    </article>
   )
 }
 
 interface EventDetailsSectionProps {
-  events: [EventInfo, EventInfo]
+  events: readonly [EventInfo, EventInfo]
+  date: string
 }
 
-export default function EventDetailsSection({ events }: EventDetailsSectionProps) {
+export default function EventDetailsSection({ events, date }: EventDetailsSectionProps) {
+  const headerRef = useScrollReveal<HTMLDivElement>({ threshold: 0.2 })
+
   return (
-    <section id="details" className="event-details">
-      <div className="event-details__inner">
-        <div className="event-details__header">
-          <p className="event-details__eyebrow">Join Us</p>
-          <h2 className="event-details__title">The Details</h2>
-          <hr className="event-details__divider" />
-        </div>
-        <div className="event-details__cards">
-          {events.map((event) => (
-            <EventCard key={event.type} event={event} />
-          ))}
+    <section id="details" className="details">
+      <div className="details__inner">
+        <header className="details__header reveal" ref={headerRef}>
+          <span className="eyebrow">The Day</span>
+          <h2 className="section-title">
+            A <em>simple</em> rhythm to the day
+          </h2>
+          <p className="details__date">{date}</p>
+        </header>
+
+        <div className="details__cards">
+          <EventCard event={events[0]} index={0} />
+          <div className="details__divider" aria-hidden="true">
+            <span className="details__divider-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" fill="currentColor" />
+                <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
+              </svg>
+            </span>
+          </div>
+          <EventCard event={events[1]} index={1} />
         </div>
       </div>
     </section>

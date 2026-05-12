@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useCountdown } from '../../hooks/useCountdown'
+import useScrollReveal from '../../hooks/useScrollReveal'
 import './CountdownSection.css'
 
 interface FlipCardProps {
@@ -17,7 +18,7 @@ function FlipCard({ value, label }: FlipCardProps) {
       const t = setTimeout(() => {
         setPrevValue(value)
         setFlipping(false)
-      }, 300)
+      }, 320)
       return () => clearTimeout(t)
     }
   }, [value, prevValue])
@@ -37,24 +38,23 @@ interface CountdownSectionProps {
 export default function CountdownSection({ weddingDate }: CountdownSectionProps) {
   const { days, hours, minutes, seconds } = useCountdown(weddingDate)
   const isOver = days === 0 && hours === 0 && minutes === 0 && seconds === 0
+  const ref = useScrollReveal<HTMLDivElement>({ threshold: 0.25 })
 
   return (
-    <section className="countdown">
-      <div className="countdown__inner">
-        <p className="countdown__label">
-          {isOver ? "We're married!" : 'Until we say I do'}
+    <section className="countdown" aria-label="Countdown">
+      <div className="countdown__inner reveal" ref={ref}>
+        <p className="countdown__eyebrow">
+          {isOver ? 'The day has come' : 'Counting down to the day'}
         </p>
         {!isOver && (
           <div className="countdown__cards">
             <FlipCard value={days} label="Days" />
-            <span className="countdown__sep" aria-hidden="true">:</span>
             <FlipCard value={hours} label="Hours" />
-            <span className="countdown__sep" aria-hidden="true">:</span>
             <FlipCard value={minutes} label="Minutes" />
-            <span className="countdown__sep" aria-hidden="true">:</span>
             <FlipCard value={seconds} label="Seconds" />
           </div>
         )}
+        {isOver && <p className="countdown__title">We're married</p>}
       </div>
     </section>
   )
