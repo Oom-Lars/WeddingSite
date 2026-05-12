@@ -1,0 +1,49 @@
+.footer {
+  background: var(--olive);
+  padding: 3rem 2rem;
+}
+
+.footer__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.footer__ornament {
+  width: 200px;
+  color: var(--gold-accent);
+}
+
+.footer__ornament-svg {
+  width: 100%;
+  height: auto;
+}
+
+.footer__names {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.12em;
+}
+
+.footer__date {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  opacity: 0.55;
+}
+
+.footer__tagline {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  color: var(--gold-accent);
+  opacity: 0.7;
+  margin-top: 0.4rem;
+}

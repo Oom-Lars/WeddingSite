@@ -1,0 +1,130 @@
+.dresscode {
+  background: var(--olive);
+  padding: var(--section-pad) 2rem;
+}
+
+.dresscode__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dresscode__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.dresscode__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  margin-bottom: 0.5rem;
+}
+
+.dresscode__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
+.dresscode__style {
+  font-family: var(--font-script);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--cream);
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+.dresscode__divider {
+  border: none;
+  border-top: 1px solid var(--gold-accent);
+  width: 60px;
+  margin: 0 auto;
+  opacity: 0.5;
+}
+
+/* Two columns */
+.dresscode__columns {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0 2rem;
+  width: 100%;
+  align-items: start;
+}
+
+.dresscode__sep {
+  background: var(--gold-accent);
+  opacity: 0.35;
+  align-self: stretch;
+}
+
+.dresscode__col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  gap: 0.8rem;
+}
+
+.dresscode__col-icon-wrap {
+  width: 80px;
+  height: 100px;
+  color: var(--cream);
+  opacity: 0.7;
+}
+
+.dresscode__col-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.dresscode__col-label {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.dresscode__col-style {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--cream);
+  opacity: 0.75;
+  max-width: 280px;
+}
+
+.dresscode__note {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  opacity: 0.55;
+  text-align: center;
+  margin-top: 2.5rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .dresscode__columns {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .dresscode__sep {
+    height: 1px;
+    width: 60px;
+    margin: 0 auto;
+    align-self: auto;
+  }
+}

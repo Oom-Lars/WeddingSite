@@ -1,0 +1,119 @@
+.gallery {
+  background: var(--cream);
+  padding: var(--section-pad) 2rem;
+}
+
+.gallery__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.gallery__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.gallery__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 0.5rem;
+}
+
+.gallery__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.gallery__divider {
+  border: none;
+  border-top: 1px solid var(--gold-accent);
+  width: 60px;
+  margin: 0 auto;
+  opacity: 0.6;
+}
+
+/* Masonry grid */
+.gallery__grid {
+  columns: 3;
+  column-gap: 1.2rem;
+}
+
+.gallery__item {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 1.2rem;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(184, 151, 90, 0.15);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.gallery__item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px var(--gold-accent), 0 8px 24px rgba(80, 107, 56, 0.15);
+}
+
+.gallery__placeholder-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption overlay */
+.gallery__caption {
+  position: absolute;
+  inset: 0;
+  background: rgba(80, 107, 56, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+  padding: 1rem;
+}
+
+.gallery__item:hover .gallery__caption {
+  opacity: 1;
+}
+
+.gallery__caption span {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--cream);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1024px) {
+  .gallery__grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery__grid {
+    columns: 1;
+  }
+}

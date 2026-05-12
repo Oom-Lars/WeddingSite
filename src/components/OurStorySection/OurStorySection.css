@@ -1,0 +1,181 @@
+.story {
+  background: var(--cream);
+  padding: var(--section-pad) 2rem;
+}
+
+.story__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.story__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.story__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 0.5rem;
+}
+
+.story__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.story__divider {
+  border: none;
+  border-top: 1px solid var(--gold-accent);
+  width: 60px;
+  margin: 0 auto;
+  opacity: 0.6;
+}
+
+/* Timeline */
+.story__timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Vertical line */
+.story__timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold-accent) 10%, var(--gold-accent) 90%, transparent);
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+
+/* Milestone */
+.milestone {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  align-items: start;
+  gap: 0;
+  position: relative;
+}
+
+.milestone--left .milestone__card {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.milestone--left .milestone__dot {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.milestone--left .milestone__card ~ * {
+  grid-column: 3;
+}
+
+.milestone--right .milestone__card {
+  grid-column: 3;
+  grid-row: 1;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.milestone--right .milestone__dot {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Dot */
+.milestone__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--cream);
+  border: 2px solid var(--gold-accent);
+  border-radius: 50%;
+  color: var(--olive);
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.milestone__icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Card */
+.milestone__card {
+  background: white;
+  border: 1px solid rgba(184, 151, 90, 0.2);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  box-shadow: 0 2px 16px rgba(80, 107, 56, 0.06);
+}
+
+.milestone__date {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-accent);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.milestone__title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.milestone__desc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  opacity: 0.75;
+}
+
+/* Mobile: single column */
+@media (max-width: 768px) {
+  .story__timeline::before {
+    left: 24px;
+  }
+
+  .milestone {
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: auto;
+  }
+
+  .milestone--left .milestone__card,
+  .milestone--right .milestone__card {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    padding-left: 1.5rem;
+    padding-right: 0;
+  }
+
+  .milestone--left .milestone__dot,
+  .milestone--right .milestone__dot {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}

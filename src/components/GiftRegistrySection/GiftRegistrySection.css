@@ -1,0 +1,88 @@
+.registry {
+  background: var(--cream);
+  padding: var(--section-pad) 2rem;
+}
+
+.registry__inner {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.registry__icon {
+  width: 52px;
+  height: 52px;
+  color: var(--gold-accent);
+  opacity: 0.8;
+}
+
+.registry__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+.registry__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.registry__divider {
+  border: none;
+  border-top: 1px solid var(--gold-accent);
+  width: 60px;
+  margin: 0.2rem auto;
+  opacity: 0.6;
+}
+
+.registry__note {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  opacity: 0.7;
+  max-width: 440px;
+  margin: 0.5rem 0 1rem;
+}
+
+.registry__btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--olive);
+  border: 1px solid var(--olive);
+  padding: 0.85rem 2.2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+
+.registry__btn:hover {
+  background: var(--olive);
+  color: var(--cream);
+}
+
+@media (max-width: 480px) {
+  .registry__btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.85rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .registry__inner {
+    width: 100%;
+  }
+}
