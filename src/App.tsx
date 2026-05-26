@@ -2,13 +2,14 @@ import { WEDDING_CONFIG } from './config'
 import Nav from './components/Nav/Nav'
 import HeroSection from './components/HeroSection/HeroSection'
 import CountdownSection from './components/CountdownSection/CountdownSection'
-import OurStorySection from './components/OurStorySection/OurStorySection'
 import EventDetailsSection from './components/EventDetailsSection/EventDetailsSection'
 import VenueSection from './components/VenueSketchSection/VenueSketchSection'
 import DressCodeSection from './components/DressCodeSection/DressCodeSection'
 import PhotoGallerySection from './components/PhotoGallerySection/PhotoGallerySection'
+import FAQSection from './components/FAQSection/FAQSection'
+import PlettFavouritesSection from './components/PlettFavouritesSection/PlettFavouritesSection'
 import RSVPSection from './components/RSVPSection/RSVPSection'
-import GiftRegistrySection from './components/GiftRegistrySection/GiftRegistrySection'
+import HoneymoonFundSection from './components/HoneymoonFundSection/HoneymoonFundSection'
 import Footer from './components/Footer/Footer'
 
 function App() {
@@ -33,7 +34,6 @@ function App() {
           venueLocation={WEDDING_CONFIG.venueLocation}
         />
         <CountdownSection weddingDate={WEDDING_CONFIG.weddingDate} />
-        <OurStorySection milestones={[...WEDDING_CONFIG.milestones]} />
         <EventDetailsSection events={WEDDING_CONFIG.events} date={fullDate} />
         <VenueSection
           venueName={WEDDING_CONFIG.venueName}
@@ -42,19 +42,30 @@ function App() {
         />
         <DressCodeSection
           dressStyle={WEDDING_CONFIG.dressCode.style}
-          description={WEDDING_CONFIG.dressCode.description}
           columns={WEDDING_CONFIG.dressCode.columns}
           palette={WEDDING_CONFIG.dressCode.palette}
           avoid={WEDDING_CONFIG.dressCode.avoid}
         />
         <PhotoGallerySection images={[...WEDDING_CONFIG.gallery]} />
+        <FAQSection faqs={WEDDING_CONFIG.faqs} />
+        <PlettFavouritesSection
+          eat={WEDDING_CONFIG.plettFavourites.eat}
+          do={WEDDING_CONFIG.plettFavourites.do}
+        />
         <RSVPSection
           deadline={WEDDING_CONFIG.rsvpDeadline}
           emailjsServiceId={WEDDING_CONFIG.emailjs.serviceId}
           emailjsTemplateId={WEDDING_CONFIG.emailjs.templateId}
           emailjsPublicKey={WEDDING_CONFIG.emailjs.publicKey}
         />
-        <GiftRegistrySection registryUrl={WEDDING_CONFIG.registryUrl} />
+        <HoneymoonFundSection
+          bank={WEDDING_CONFIG.honeymoonFund.bank}
+          accountHolder={WEDDING_CONFIG.honeymoonFund.accountHolder}
+          accountNumberParts={WEDDING_CONFIG.honeymoonFund.accountNumberParts}
+          branchCode={WEDDING_CONFIG.honeymoonFund.branchCode}
+          accountType={WEDDING_CONFIG.honeymoonFund.accountType}
+          referenceSuffix={WEDDING_CONFIG.honeymoonFund.referenceSuffix}
+        />
       </main>
       <Footer
         coupleNames={WEDDING_CONFIG.coupleNames}

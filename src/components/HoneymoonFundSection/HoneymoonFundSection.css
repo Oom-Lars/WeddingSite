@@ -1,0 +1,220 @@
+.fund {
+  background: var(--cream-50);
+  padding: var(--section-pad-y) var(--gutter);
+  position: relative;
+}
+
+.fund::before {
+  content: '';
+  position: absolute;
+  inset: 0 var(--gutter) auto;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--olive-200), transparent);
+}
+
+.fund__inner {
+  max-width: 38rem;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.fund__inner .eyebrow::before {
+  display: none;
+}
+
+.fund__note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--ink-500);
+  max-width: 32rem;
+}
+
+.fund__reveal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--olive-800);
+  background: transparent;
+  padding: 1rem 2.25rem;
+  border: 1px solid var(--olive-800);
+  border-radius: var(--radius-pill);
+  margin-top: 0.75rem;
+  cursor: pointer;
+  transition:
+    background var(--t-base) var(--ease-out),
+    color var(--t-base) var(--ease-out),
+    transform var(--t-fast) var(--ease-out);
+}
+
+.fund__reveal-btn svg {
+  width: 12px;
+  height: 12px;
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.fund__reveal-btn:hover {
+  background: var(--olive-800);
+  color: var(--cream-50);
+  transform: translateY(-1px);
+}
+
+.fund__reveal-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ── Banking card ──────────────────────────────────── */
+
+.fund__card {
+  width: 100%;
+  max-width: 32rem;
+  margin-top: 0.75rem;
+  background: #fff;
+  border: 1px solid var(--olive-200);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem clamp(1.25rem, 4vw, 2rem);
+  box-shadow: var(--shadow-md);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  animation: fundReveal 0.6s var(--ease-out) both;
+}
+
+@keyframes fundReveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fund__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--cream-200);
+}
+
+.fund__row:last-of-type {
+  border-bottom: none;
+}
+
+.fund__row-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  flex-shrink: 0;
+}
+
+.fund__row-value-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.fund__row-value {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--ink-900);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fund__copy {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--olive-700);
+  background: var(--cream-100);
+  border: 1px solid var(--olive-200);
+  border-radius: var(--radius-pill);
+  padding: 0.32rem 0.7rem;
+  cursor: pointer;
+  transition:
+    background var(--t-fast) var(--ease-out),
+    color var(--t-fast) var(--ease-out);
+}
+
+.fund__copy:hover {
+  background: var(--olive-800);
+  color: var(--cream-50);
+  border-color: var(--olive-800);
+}
+
+.fund__reference {
+  margin-top: 0.5rem;
+  padding: 1rem 1.1rem;
+  background: var(--cream-100);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fund__reference-label {
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.fund__reference-rule {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-700);
+}
+
+.fund__reference-rule strong {
+  color: var(--olive-800);
+  font-weight: 600;
+}
+
+.fund__reference-rule em {
+  font-style: italic;
+  letter-spacing: 0.04em;
+  background: #fff;
+  padding: 0.05rem 0.35rem;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 480px) {
+  .fund__reveal-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .fund__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .fund__row-value-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

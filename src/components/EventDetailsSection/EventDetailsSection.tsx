@@ -4,6 +4,7 @@ import './EventDetailsSection.css'
 export interface EventInfo {
   type: 'ceremony' | 'reception'
   time: string
+  arrivalTime?: string
   venue: string
   address: string
   mapsUrl: string
@@ -23,6 +24,12 @@ function EventCard({ event, index }: { event: EventInfo; index: number }) {
         <span className="event__time-value">{event.time}</span>
         <span className="event__time-rule" aria-hidden="true" />
       </div>
+
+      {event.arrivalTime && (
+        <p className="event__arrival">
+          Guest arrival from <strong>{event.arrivalTime}</strong>
+        </p>
+      )}
 
       <p className="event__address">{event.address}</p>
 

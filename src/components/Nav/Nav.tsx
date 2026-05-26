@@ -6,10 +6,11 @@ interface NavProps {
 }
 
 const SECTIONS = [
-  { id: 'story', label: 'Story' },
   { id: 'details', label: 'Details' },
   { id: 'venue', label: 'Venue' },
-  { id: 'gallery', label: 'Gallery' },
+  { id: 'attire', label: 'Attire' },
+  { id: 'faq', label: 'FAQ' },
+  { id: 'plett', label: 'Plett' },
   { id: 'rsvp', label: 'RSVP' },
 ] as const
 

@@ -9,7 +9,6 @@ export interface DressCodeColumn {
 
 interface DressCodeSectionProps {
   dressStyle: string
-  description: string
   columns: readonly [DressCodeColumn, DressCodeColumn]
   palette: readonly string[]
   avoid: string
@@ -17,7 +16,6 @@ interface DressCodeSectionProps {
 
 export default function DressCodeSection({
   dressStyle,
-  description,
   columns,
   palette,
   avoid,
@@ -26,12 +24,12 @@ export default function DressCodeSection({
   const gridRef = useScrollReveal<HTMLDivElement>({ threshold: 0.15 })
 
   return (
-    <section className="dresscode">
+    <section id="attire" className="dresscode">
       <div className="dresscode__inner">
         <header className="dresscode__header reveal" ref={headerRef}>
           <span className="eyebrow eyebrow--light">Attire</span>
           <h2 className="dresscode__title">
-            Dress for <em>a garden</em>
+            Dress for <em>a summer wine farm</em>
           </h2>
           <p className="dresscode__style">{dressStyle}</p>
         </header>
@@ -39,7 +37,7 @@ export default function DressCodeSection({
         <div className="dresscode__grid reveal" ref={gridRef}>
           <div className="dresscode__mood">
             <div className="dresscode__mood-image">
-              <img src={images.dressMood} alt="Dress code mood — earth-toned florals" loading="lazy" />
+              <img src={images.dressMood} alt="Dress code mood — vineyard tones" loading="lazy" />
             </div>
             <div className="dresscode__palette" aria-label="Recommended colour palette">
               {palette.map((c, i) => (
@@ -54,8 +52,6 @@ export default function DressCodeSection({
           </div>
 
           <div className="dresscode__notes">
-            <p className="dresscode__description">{description}</p>
-
             <div className="dresscode__cols">
               {columns.map((c) => (
                 <div key={c.label} className="dresscode__col">

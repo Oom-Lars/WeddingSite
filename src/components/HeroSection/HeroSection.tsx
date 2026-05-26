@@ -96,7 +96,7 @@ export default function HeroSection({
             <span className="hero__meta-item">{venueLocation}</span>
           </div>
 
-          <a className="hero__scroll" href="#story" aria-label="Continue to our story">
+          <a className="hero__scroll" href="#details" aria-label="Continue to the details">
             <span>Discover</span>
             <span className="hero__scroll-line" aria-hidden="true" />
           </a>

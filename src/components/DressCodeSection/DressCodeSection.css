@@ -172,7 +172,7 @@
 
 .dresscode__cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
@@ -225,7 +225,6 @@
 
 @media (max-width: 560px) {
   .dresscode__cols {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   .dresscode__swatch {
