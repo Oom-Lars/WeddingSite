@@ -2,7 +2,12 @@ import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import { images } from '../../data/images'
-import { validateRSVPForm, ALLERGENS, DINNER_OPTIONS } from '../../utils/validateRSVPForm'
+import {
+  validateRSVPForm,
+  ALLERGENS,
+  DINNER_OPTIONS,
+  dinnerOptionText,
+} from '../../utils/validateRSVPForm'
 import type {
   RSVPFormData,
   AttendanceStatus,
@@ -17,6 +22,12 @@ interface RSVPSectionProps {
   emailjsServiceId?: string
   emailjsTemplateId?: string
   emailjsPublicKey?: string
+}
+
+function formatDinnerChoice(choice: DinnerChoice | undefined): string {
+  if (!choice) return '—'
+  const option = DINNER_OPTIONS.find((o) => o.value === choice)
+  return option ? dinnerOptionText(option) : '—'
 }
 
 function formatAllergyList(allergies: Allergen[] | undefined, other: string | undefined): string {
@@ -86,13 +97,11 @@ export default function RSVPSection({
             full_name: data.fullName,
             guest_email: data.email,
             attendance: data.attendance === 'yes' ? 'Accepts' : 'Declines',
-            dinner_choice: data.dinnerChoice
-              ? DINNER_OPTIONS.find((o) => o.value === data.dinnerChoice)?.label ?? '—'
-              : '—',
+            dinner_choice: formatDinnerChoice(data.dinnerChoice),
             allergies: formatAllergyList(data.allergies, data.otherAllergy),
             plus_one_name: data.hasPlusOne ? data.plusOneName : 'None',
-            plus_one_dinner_choice: data.hasPlusOne && data.plusOneDinnerChoice
-              ? DINNER_OPTIONS.find((o) => o.value === data.plusOneDinnerChoice)?.label ?? '—'
+            plus_one_dinner_choice: data.hasPlusOne
+              ? formatDinnerChoice(data.plusOneDinnerChoice)
               : '—',
             plus_one_allergies: data.hasPlusOne
               ? formatAllergyList(data.plusOneAllergies, data.plusOneOtherAllergy)
@@ -280,7 +289,9 @@ export default function RSVPSection({
                   >
                     <option value="" disabled>Select your preference</option>
                     {DINNER_OPTIONS.map((o) => (
-                      <option key={o.value} value={o.value}>{o.label}</option>
+                      <option key={o.value} value={o.value}>
+                        {dinnerOptionText(o)}
+                      </option>
                     ))}
                   </select>
                   {errors.dinnerChoice && (
@@ -382,7 +393,9 @@ export default function RSVPSection({
                         >
                           <option value="" disabled>Select their preference</option>
                           {DINNER_OPTIONS.map((o) => (
-                            <option key={o.value} value={o.value}>{o.label}</option>
+                            <option key={o.value} value={o.value}>
+                              {dinnerOptionText(o)}
+                            </option>
                           ))}
                         </select>
                         {errors.plusOneDinnerChoice && (

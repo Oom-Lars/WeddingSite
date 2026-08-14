@@ -31,11 +31,17 @@ export const WEDDING_CONFIG = {
     columns: [
       {
         label: 'For Him',
+        image: images.mensDressCode,
+        imageAlt:
+          'Illustrated looks for him — linen and lightweight suits in cream, stone, sage and dusty blue',
         style:
           "Think Italian summer wine farm. Lean into an elegant summer look with relaxed tailoring and warm, earthy tones — linen or lightweight suits, breathable fabrics, tailored separates. Soft neutrals, sage or olive greens, stone, dusty blue, slate, light grey, navy, cream. Muted vineyard-inspired shades encouraged. Ties are welcome but not required.",
       },
       {
         label: 'For Her',
+        image: images.womensDressCode,
+        imageAlt:
+          'Illustrated looks for her — long and mid-length dresses in a range of colours',
         style:
           "We'd love to see you dress up with us. We're aiming for a formal feel, so long or mid-length dresses and elegant eveningwear are welcome but not required. Dressy, formal looks are perfect too. A gentle ask — stay away from stilettos, the ceremony is on grass.",
       },
@@ -44,13 +50,14 @@ export const WEDDING_CONFIG = {
     avoid: 'Kindly avoid pure white and ivory.',
   },
 
+  // Alt text must stay in step with images.gallery — see the ordering note there.
   gallery: [
-    { id: '1', src: images.gallery[0], alt: 'Couple at the altar, soft afternoon light' },
-    { id: '2', src: images.gallery[1], alt: 'Walking through the vines together' },
-    { id: '3', src: images.gallery[2], alt: 'Olive branch detail' },
-    { id: '4', src: images.gallery[3], alt: 'Wedding rings on linen' },
-    { id: '5', src: images.gallery[4], alt: 'Candid portrait in the garden' },
-    { id: '6', src: images.gallery[5], alt: 'Long table dinner under string lights' },
+    { id: '1', src: images.gallery[0], alt: 'Her hand resting on his shoulder, engagement ring in frame' },
+    { id: '2', src: images.gallery[1], alt: 'The proposal — down on one knee on the beach at dusk' },
+    { id: '3', src: images.gallery[2], alt: 'A kiss on the forehead in the dunes' },
+    { id: '4', src: images.gallery[3], alt: 'Kissing on the shore, hair caught in the wind' },
+    { id: '5', src: images.gallery[4], alt: 'Hands held together, the new engagement ring close up' },
+    { id: '6', src: images.gallery[5], alt: 'Running down to the sea hand in hand' },
   ],
 
   rsvpDeadline: 'Saturday, 31st October 2026',
@@ -60,11 +67,11 @@ export const WEDDING_CONFIG = {
   // string in the HTML. See HoneymoonFundSection for the reveal pattern.
   honeymoonFund: {
     bank: 'FNB',
-    accountHolder: 'PLACEHOLDER — couple to fill in',
+    accountHolder: 'Rene Pienaar',
     // Split into three groups; concatenated in the browser at click time.
-    accountNumberParts: ['0000', '0000', '00'] as const,
+    accountNumberParts: ['6290', '5529', '098'] as const,
     branchCode: '250655',
-    accountType: 'Cheque',
+    accountType: 'FNBy Next Transact',
     // Guests should use this reference so the couple knows who the gift is from.
     // Format: {their surname} honeymoon  (e.g. "Smith honeymoon").
     referenceSuffix: 'honeymoon',

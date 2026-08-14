@@ -13,11 +13,10 @@ interface FAQSectionProps {
 
 function Item({ faq, index }: { faq: FAQItem; index: number }) {
   const [open, setOpen] = useState(false)
-  const ref = useScrollReveal<HTMLDivElement>({ threshold: 0.15 })
   const id = `faq-${index}`
 
   return (
-    <div className={`faq__item reveal ${open ? 'faq__item--open' : ''}`} ref={ref}>
+    <div className={`faq__item ${open ? 'faq__item--open' : ''}`}>
       <button
         type="button"
         className="faq__q"

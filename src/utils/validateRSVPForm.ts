@@ -4,11 +4,24 @@ export type AttendanceStatus = 'yes' | 'no';
 
 export type DinnerChoice = 'chicken' | 'fish' | 'porkBelly';
 
-export const DINNER_OPTIONS: readonly { value: DinnerChoice; label: string }[] = [
-  { value: 'chicken', label: 'Chicken' },
-  { value: 'fish', label: 'Fish' },
-  { value: 'porkBelly', label: 'Pork Belly' },
+export interface DinnerOption {
+  value: DinnerChoice;
+  /** The main itself. */
+  label: string;
+  /** What it is served with — shown to guests and included in the RSVP email. */
+  sides: string;
+}
+
+export const DINNER_OPTIONS: readonly DinnerOption[] = [
+  { value: 'chicken', label: 'Chicken', sides: 'flavoured spiced rice and veg' },
+  { value: 'fish', label: 'Fish', sides: 'crispy layered potato' },
+  { value: 'porkBelly', label: 'Pork Belly', sides: 'mash and veg' },
 ];
+
+/** Full menu line for a main, e.g. "Fish — with crispy layered potato". */
+export function dinnerOptionText(option: DinnerOption): string {
+  return `${option.label} — with ${option.sides}`;
+}
 
 export type Allergen = 'Dairy' | 'Gluten' | 'Shellfish' | 'Nuts';
 

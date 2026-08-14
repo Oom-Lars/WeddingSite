@@ -68,6 +68,14 @@
   transition: transform 1.4s var(--ease-out), filter var(--t-base) var(--ease-out);
 }
 
+/* Tiles 0 and 3 hold the two portrait photographs, which carry their faces in
+   the upper third. Bias the crop upward so the faces survive the wide
+   letterbox these slots collapse to on small screens. */
+.gallery__tile--0 .gallery__media img,
+.gallery__tile--3 .gallery__media img {
+  object-position: center 38%;
+}
+
 .gallery__tile:hover .gallery__media img {
   transform: scale(1.06);
   filter: brightness(1.04) saturate(1.05);

@@ -5,6 +5,8 @@ import './DressCodeSection.css'
 export interface DressCodeColumn {
   label: string
   style: string
+  image: string
+  imageAlt: string
 }
 
 interface DressCodeSectionProps {
@@ -56,6 +58,9 @@ export default function DressCodeSection({
               {columns.map((c) => (
                 <div key={c.label} className="dresscode__col">
                   <h3 className="dresscode__col-label">{c.label}</h3>
+                  <figure className="dresscode__col-figure">
+                    <img src={c.image} alt={c.imageAlt} loading="lazy" />
+                  </figure>
                   <p className="dresscode__col-style">{c.style}</p>
                 </div>
               ))}
