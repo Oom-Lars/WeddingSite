@@ -115,6 +115,17 @@
 
 /* ── Header ────────────────────────────────────────── */
 
+/* Sits under the deadline line: tells guests whose names belong on the form
+   before they reach the plus-one block further down. */
+.rsvp__whose-names {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--ink-500);
+  max-width: 34rem;
+}
+
+
 .rsvp__header {
   text-align: center;
   display: flex;

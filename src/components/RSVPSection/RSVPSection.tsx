@@ -164,13 +164,17 @@ export default function RSVPSection({
           <p className="rsvp__deadline">
             We'd love your reply by <strong>{deadline}</strong>.
           </p>
+          <p className="rsvp__whose-names">
+            Please reply with your own name — and your plus one's name too, if you
+            were personally invited with one.
+          </p>
         </header>
 
         <div className="rsvp__layout">
           <aside className="rsvp__photo reveal" ref={photoRef} aria-hidden="true">
             <div className="rsvp__photo-frame">
               <img
-                src={images.gallery[0]}
+                src={images.gallery[3]}
                 alt=""
                 loading="lazy"
               />
@@ -178,7 +182,7 @@ export default function RSVPSection({
                 <span className="rsvp__photo-stamp-line">Save the date</span>
                 <span className="rsvp__photo-stamp-rule" />
                 <span className="rsvp__photo-stamp-line rsvp__photo-stamp-line--small">
-                  Plettenberg Bay
+                  Bramon Wine Estate
                 </span>
               </div>
             </div>
@@ -198,7 +202,7 @@ export default function RSVPSection({
               <div className="rsvp__row">
                 <div className="rsvp__field">
                   <label htmlFor="fullName" className="rsvp__label">
-                    Full name<span className="rsvp__req" aria-hidden="true">*</span>
+                    Your full name<span className="rsvp__req" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="fullName"

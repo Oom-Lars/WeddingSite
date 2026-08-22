@@ -39,6 +39,7 @@ function App() {
           venueName={WEDDING_CONFIG.venueName}
           venueLocation={WEDDING_CONFIG.venueLocation}
           venueTagline={WEDDING_CONFIG.venueTagline}
+          venueMapsUrl={WEDDING_CONFIG.venueMapsUrl}
         />
         <DressCodeSection
           dressStyle={WEDDING_CONFIG.dressCode.style}

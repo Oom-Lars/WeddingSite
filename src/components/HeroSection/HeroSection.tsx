@@ -28,7 +28,7 @@ export default function HeroSection({
         const rect = heroRef.current.getBoundingClientRect()
         if (rect.bottom < 0) return
         const offset = Math.min(rect.top * -0.15, 120)
-        imageRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.06)`
+        imageRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.02)`
       })
     }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -53,7 +53,10 @@ export default function HeroSection({
       <div className="hero__media" aria-hidden="true">
         <div className="hero__image" ref={imageRef}>
           <img
-            src={images.heroEstate}
+            src={images.heroCover.fallback}
+            srcSet={images.heroCover.srcSet}
+            // The cover always spans the full viewport width.
+            sizes="100vw"
             alt=""
             loading="eager"
             decoding="async"
@@ -73,29 +76,40 @@ export default function HeroSection({
           </span>
         </div>
 
+        {/* Everything readable lives on one frosted card. Over a busy
+            watercolour, glow and a lightened veil were not enough — the small
+            tracked-out lines kept sinking into the foliage. A real surface makes
+            legibility independent of whatever sits behind it, and it lets the
+            painting stay rich everywhere else instead of being washed pale to
+            support the type. The date line moved up here from the foot of the
+            hero for the same reason. */}
         <div className="hero__center">
-          <p className="hero__eyebrow">Together with their families</p>
+          <div className="hero__card">
+            <p className="hero__eyebrow">Together with their families</p>
 
-          <h1 className="hero__title">
-            <span className="hero__name">{first}</span>
-            <span className="hero__amp" aria-hidden="true">&amp;</span>
-            <span className="hero__name">{second}</span>
-          </h1>
+            <h1 className="hero__title">
+              <span className="hero__name">{first}</span>
+              <span className="hero__amp" aria-hidden="true">&amp;</span>
+              <span className="hero__name">{second}</span>
+            </h1>
 
-          <p className="hero__lede">
-            invite you to celebrate their wedding
-          </p>
+            <p className="hero__lede">
+              invite you to celebrate their wedding
+            </p>
+
+            <span className="hero__card-rule" aria-hidden="true" />
+
+            <div className="hero__meta">
+              <span className="hero__meta-item">{dateLine}</span>
+              <span className="hero__meta-dot" aria-hidden="true" />
+              <span className="hero__meta-item">{venueName}</span>
+              <span className="hero__meta-dot" aria-hidden="true" />
+              <span className="hero__meta-item">{venueLocation}</span>
+            </div>
+          </div>
         </div>
 
         <div className="hero__bottom">
-          <div className="hero__meta">
-            <span className="hero__meta-item">{dateLine}</span>
-            <span className="hero__meta-dot" aria-hidden="true" />
-            <span className="hero__meta-item">{venueName}</span>
-            <span className="hero__meta-dot" aria-hidden="true" />
-            <span className="hero__meta-item">{venueLocation}</span>
-          </div>
-
           <a className="hero__scroll" href="#details" aria-label="Continue to the details">
             <span>Discover</span>
             <span className="hero__scroll-line" aria-hidden="true" />

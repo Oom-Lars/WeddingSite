@@ -86,60 +86,56 @@
 
 .dresscode__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
   gap: clamp(2.5rem, 6vw, 5rem);
   align-items: start;
 }
 
-/* ── Mood column ───────────────────────────────────── */
+/* ── Palette column ────────────────────────────────── */
 
+/* Was a 4:5 mood photo with the swatches captioned underneath. The photo was
+   stock and has been removed; the palette stands alone now, so it sits in a
+   sticky card that stays beside the his/hers notes while they scroll. */
 .dresscode__mood {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.dresscode__mood-image {
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid rgba(196, 181, 156, 0.22);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(251, 249, 244, 0.1);
-  box-shadow: var(--shadow-lg);
-  position: relative;
+  background: rgba(251, 249, 244, 0.035);
+  position: sticky;
+  top: 6rem;
 }
 
-.dresscode__mood-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 60%,
-    rgba(30, 35, 23, 0.4) 100%
-  );
-  pointer-events: none;
+.dresscode__mood-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass-soft);
 }
 
-.dresscode__mood-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.6s var(--ease-out);
+.dresscode__mood-hint {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--cream-100);
+  opacity: 0.72;
 }
 
-.dresscode__mood-image:hover img {
-  transform: scale(1.05);
-}
-
+/* Roomier than before — the swatches are the whole column now, not a footnote
+   under a photograph. */
 .dresscode__palette {
   display: flex;
-  gap: 0.6rem;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
 }
 
 .dresscode__swatch {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1.5px solid rgba(251, 249, 244, 0.18);
   box-shadow: var(--shadow-sm);
@@ -238,8 +234,14 @@
     gap: 2.5rem;
   }
   .dresscode__mood {
-    max-width: 22rem;
+    position: static;
+    max-width: 26rem;
     margin: 0 auto;
+    align-items: center;
+    text-align: center;
+  }
+  .dresscode__palette {
+    justify-content: center;
   }
 }
 
@@ -248,7 +250,7 @@
     gap: 1.5rem;
   }
   .dresscode__swatch {
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
   }
 }

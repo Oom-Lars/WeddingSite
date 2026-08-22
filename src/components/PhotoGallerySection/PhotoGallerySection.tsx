@@ -35,10 +35,10 @@ export default function PhotoGallerySection({ images }: PhotoGallerySectionProps
         <header className="gallery__header reveal" ref={headerRef}>
           <span className="eyebrow">Moments</span>
           <h2 className="section-title">
-            A few of <em>our favourites</em>
+            The years <em>between then and now</em>
           </h2>
           <p className="section-lead">
-            Quiet snapshots from the years between then and now.
+            Quiet snapshots from the road that brought us here.
           </p>
         </header>
 

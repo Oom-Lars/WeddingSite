@@ -1,28 +1,35 @@
 import { images } from './data/images'
 
-// Replace the placeholder values below with the couple's real details before launch.
+// One source of truth for the venue, so the hero, event cards, footer and RSVP
+// stamp can never drift apart.
+const VENUE_ADDRESS = 'Bramon Wine Estate, Plettenberg Bay'
+const VENUE_MAPS_URL = 'https://maps.google.com/?q=Bramon+Wine+Estate+Plettenberg+Bay'
+
 export const WEDDING_CONFIG = {
-  coupleNames: 'René & Alex',
-  weddingDate: new Date('2026-12-12T16:00:00'),
-  venueName: 'The Venue',
+  // Alexander first, then René. Everything downstream (hero, footer, monogram)
+  // splits on the '&', so this is the only place the order is set.
+  coupleNames: 'Alexander & René',
+  weddingDate: new Date('2027-01-16T16:00:00'),
+  venueName: 'Bramon Wine Estate',
   venueLocation: 'Plettenberg Bay, South Africa',
-  venueTagline: 'A coastal celebration on the Garden Route.',
+  venueTagline: 'A summer celebration on a Plettenberg Bay wine farm.',
+  venueMapsUrl: VENUE_MAPS_URL,
 
   events: [
     {
       type: 'ceremony' as const,
       time: '4:00 PM',
       arrivalTime: '3:30 PM',
-      venue: 'Ceremony — Outdoors',
-      address: 'Plettenberg Bay, South Africa',
-      mapsUrl: 'https://maps.google.com/?q=Plettenberg+Bay',
+      venue: 'Ceremony — On the lawn',
+      address: VENUE_ADDRESS,
+      mapsUrl: VENUE_MAPS_URL,
     },
     {
       type: 'reception' as const,
       time: 'From 6:00 PM',
-      venue: 'Reception — Indoors',
-      address: 'Plettenberg Bay, South Africa',
-      mapsUrl: 'https://maps.google.com/?q=Plettenberg+Bay',
+      venue: 'Reception — In the cellar',
+      address: VENUE_ADDRESS,
+      mapsUrl: VENUE_MAPS_URL,
     },
   ],
 
@@ -60,7 +67,7 @@ export const WEDDING_CONFIG = {
     { id: '6', src: images.gallery[5], alt: 'Running down to the sea hand in hand' },
   ],
 
-  rsvpDeadline: 'Saturday, 31st October 2026',
+  rsvpDeadline: 'Monday, 30th November 2026',
 
   // Banking / honeymoon-fund details. Stored as discrete fragments so the page
   // can assemble them at render time instead of shipping a scrape-friendly
@@ -84,7 +91,7 @@ export const WEDDING_CONFIG = {
     },
     {
       q: 'Will it be indoors or outdoors?',
-      a: 'The ceremony will be outdoors. The reception will move indoors.',
+      a: 'Both — the ceremony is outdoors on the lawn at Bramon, and the reception moves indoors to the cellar.',
     },
     {
       q: 'What weather should we expect?',
@@ -141,8 +148,9 @@ export const WEDDING_CONFIG = {
   // create a service + template, and paste the IDs here.
   //
   // The template should reference these variables:
-  //   {{full_name}}, {{guest_email}}, {{attendance}}, {{plus_one_name}},
-  //   {{dinner_choice}}, {{plus_one_dinner_choice}}, {{dietary_notes}}, {{message}}
+  //   {{full_name}}, {{guest_email}}, {{attendance}}, {{dinner_choice}},
+  //   {{allergies}}, {{plus_one_name}}, {{plus_one_dinner_choice}},
+  //   {{plus_one_allergies}}, {{dietary_notes}}, {{message}}
   //
   // Set `to_email` in the EmailJS template (NOT here) so it cannot be
   // changed from the browser — see RSVPSection for details.

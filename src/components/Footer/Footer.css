@@ -49,7 +49,8 @@
 
 .footer__names {
   font-family: var(--font-display);
-  font-weight: 300;
+  /* Matches the hero title weight so the names read as one voice on both. */
+  font-weight: 600;
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: -0.005em;
   color: var(--cream-50);

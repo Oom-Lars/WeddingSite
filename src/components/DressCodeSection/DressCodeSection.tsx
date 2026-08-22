@@ -1,5 +1,4 @@
 import useScrollReveal from '../../hooks/useScrollReveal'
-import { images } from '../../data/images'
 import './DressCodeSection.css'
 
 export interface DressCodeColumn {
@@ -37,10 +36,12 @@ export default function DressCodeSection({
         </header>
 
         <div className="dresscode__grid reveal" ref={gridRef}>
+          {/* The mood photo that used to sit above these swatches was stock
+              imagery — removed at the couple's request. The palette now carries
+              the colour direction on its own, so it gets a heading and centre
+              stage instead of being a caption under a picture. */}
           <div className="dresscode__mood">
-            <div className="dresscode__mood-image">
-              <img src={images.dressMood} alt="Dress code mood — vineyard tones" loading="lazy" />
-            </div>
+            <span className="dresscode__mood-label">The palette</span>
             <div className="dresscode__palette" aria-label="Recommended colour palette">
               {palette.map((c, i) => (
                 <span
@@ -51,6 +52,9 @@ export default function DressCodeSection({
                 />
               ))}
             </div>
+            <p className="dresscode__mood-hint">
+              Olive, sage, stone, cream and brass — anywhere in here works beautifully.
+            </p>
           </div>
 
           <div className="dresscode__notes">
