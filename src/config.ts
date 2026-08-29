@@ -9,7 +9,7 @@ export const WEDDING_CONFIG = {
   // Alexander first, then René. Everything downstream (hero, footer, monogram)
   // splits on the '&', so this is the only place the order is set.
   coupleNames: 'Alexander & René',
-  weddingDate: new Date('2027-01-16T16:00:00'),
+  weddingDate: new Date('2027-01-16T15:30:00'),
   venueName: 'Bramon Wine Estate',
   venueLocation: 'Plettenberg Bay, South Africa',
   venueTagline: 'A summer celebration on a Plettenberg Bay wine farm.',
@@ -18,15 +18,14 @@ export const WEDDING_CONFIG = {
   events: [
     {
       type: 'ceremony' as const,
-      time: '4:00 PM',
-      arrivalTime: '3:30 PM',
+      time: '3:30 PM',
+      arrivalTime: '3:00 PM',
       venue: 'Ceremony — On the lawn',
       address: VENUE_ADDRESS,
       mapsUrl: VENUE_MAPS_URL,
     },
     {
       type: 'reception' as const,
-      time: 'From 6:00 PM',
       venue: 'Reception — In the cellar',
       address: VENUE_ADDRESS,
       mapsUrl: VENUE_MAPS_URL,
@@ -34,7 +33,7 @@ export const WEDDING_CONFIG = {
   ],
 
   dressCode: {
-    style: 'Italian summer wine farm — relaxed, elegant, warm.',
+    style: 'Italian summer wine farm — elegant and warm.',
     columns: [
       {
         label: 'For Him',
@@ -42,7 +41,7 @@ export const WEDDING_CONFIG = {
         imageAlt:
           'Illustrated looks for him — linen and lightweight suits in cream, stone, sage and dusty blue',
         style:
-          "Think Italian summer wine farm. Lean into an elegant summer look with relaxed tailoring and warm, earthy tones — linen or lightweight suits, breathable fabrics, tailored separates. Soft neutrals, sage or olive greens, stone, dusty blue, slate, light grey, navy, cream. Muted vineyard-inspired shades encouraged. Ties are welcome but not required.",
+          "Think Italian summer wine farm. Lean into an elegant summer look with light tailoring and warm, earthy tones — linen or lightweight suits, breathable fabrics, tailored separates. Soft neutrals, sage or olive greens, stone, dusty blue, slate, light grey, navy, cream. Muted vineyard-inspired shades encouraged. Ties are welcome but not required.",
       },
       {
         label: 'For Her',
@@ -53,7 +52,6 @@ export const WEDDING_CONFIG = {
           "We'd love to see you dress up with us. We're aiming for a formal feel, so long or mid-length dresses and elegant eveningwear are welcome but not required. Dressy, formal looks are perfect too. A gentle ask — stay away from stilettos, the ceremony is on grass.",
       },
     ] as const,
-    palette: ['#3D4A2A', '#7A8A5A', '#C4B59C', '#EFE9D9', '#A89578'] as const,
     avoid: 'Kindly avoid pure white and ivory.',
   },
 
@@ -115,7 +113,7 @@ export const WEDDING_CONFIG = {
     },
     {
       q: 'When should I arrive?',
-      a: 'Guest arrival is from 3:30 PM. The ceremony begins at 4:00 PM sharp.',
+      a: 'Guest arrival is from 3:00 PM. The ceremony begins at 3:30 PM sharp.',
     },
   ] as const,
 

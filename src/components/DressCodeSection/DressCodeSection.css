@@ -86,66 +86,7 @@
 
 .dresscode__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr);
-  gap: clamp(2.5rem, 6vw, 5rem);
-  align-items: start;
-}
-
-/* ── Palette column ────────────────────────────────── */
-
-/* Was a 4:5 mood photo with the swatches captioned underneath. The photo was
-   stock and has been removed; the palette stands alone now, so it sits in a
-   sticky card that stays beside the his/hers notes while they scroll. */
-.dresscode__mood {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  padding: clamp(1.5rem, 3vw, 2rem);
-  border: 1px solid rgba(196, 181, 156, 0.22);
-  border-radius: var(--radius-md);
-  background: rgba(251, 249, 244, 0.035);
-  position: sticky;
-  top: 6rem;
-}
-
-.dresscode__mood-label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--brass-soft);
-}
-
-.dresscode__mood-hint {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  line-height: 1.7;
-  color: var(--cream-100);
-  opacity: 0.72;
-}
-
-/* Roomier than before — the swatches are the whole column now, not a footnote
-   under a photograph. */
-.dresscode__palette {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-}
-
-.dresscode__swatch {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(251, 249, 244, 0.18);
-  box-shadow: var(--shadow-sm);
-  opacity: 0;
-  transform: scale(0.5);
-  animation: swatchPop 0.6s var(--ease-out) forwards;
-}
-
-@keyframes swatchPop {
-  to { opacity: 1; transform: scale(1); }
+  grid-template-columns: minmax(0, 1fr);
 }
 
 /* ── Notes column ──────────────────────────────────── */
@@ -168,8 +109,9 @@
 
 .dresscode__cols {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
 }
 
 .dresscode__col {
@@ -216,6 +158,9 @@
 }
 
 .dresscode__avoid {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto;
   font-family: var(--font-body);
   font-size: 0.82rem;
   line-height: 1.7;
@@ -228,29 +173,9 @@
 
 /* ── Responsive ────────────────────────────────────── */
 
-@media (max-width: 900px) {
-  .dresscode__grid {
+@media (max-width: 760px) {
+  .dresscode__cols {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-  .dresscode__mood {
-    position: static;
-    max-width: 26rem;
-    margin: 0 auto;
-    align-items: center;
-    text-align: center;
-  }
-  .dresscode__palette {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 560px) {
-  .dresscode__cols {
-    gap: 1.5rem;
-  }
-  .dresscode__swatch {
-    width: 38px;
-    height: 38px;
   }
 }

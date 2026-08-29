@@ -3,7 +3,8 @@ import './EventDetailsSection.css'
 
 export interface EventInfo {
   type: 'ceremony' | 'reception'
-  time: string
+  /** Omitted for the reception — the couple did not want a second call time. */
+  time?: string
   arrivalTime?: string
   venue: string
   address: string
@@ -20,10 +21,12 @@ function EventCard({ event, index }: { event: EventInfo; index: number }) {
 
       <h3 className="event__venue">{event.venue}</h3>
 
-      <div className="event__time">
-        <span className="event__time-value">{event.time}</span>
-        <span className="event__time-rule" aria-hidden="true" />
-      </div>
+      {event.time && (
+        <div className="event__time">
+          <span className="event__time-value">{event.time}</span>
+          <span className="event__time-rule" aria-hidden="true" />
+        </div>
+      )}
 
       {event.arrivalTime && (
         <p className="event__arrival">

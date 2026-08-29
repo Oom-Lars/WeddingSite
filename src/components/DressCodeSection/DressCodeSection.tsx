@@ -11,14 +11,12 @@ export interface DressCodeColumn {
 interface DressCodeSectionProps {
   dressStyle: string
   columns: readonly [DressCodeColumn, DressCodeColumn]
-  palette: readonly string[]
   avoid: string
 }
 
 export default function DressCodeSection({
   dressStyle,
   columns,
-  palette,
   avoid,
 }: DressCodeSectionProps) {
   const headerRef = useScrollReveal<HTMLDivElement>({ threshold: 0.2 })
@@ -36,27 +34,6 @@ export default function DressCodeSection({
         </header>
 
         <div className="dresscode__grid reveal" ref={gridRef}>
-          {/* The mood photo that used to sit above these swatches was stock
-              imagery — removed at the couple's request. The palette now carries
-              the colour direction on its own, so it gets a heading and centre
-              stage instead of being a caption under a picture. */}
-          <div className="dresscode__mood">
-            <span className="dresscode__mood-label">The palette</span>
-            <div className="dresscode__palette" aria-label="Recommended colour palette">
-              {palette.map((c, i) => (
-                <span
-                  key={c}
-                  className="dresscode__swatch"
-                  style={{ background: c, animationDelay: `${i * 0.08}s` }}
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
-            <p className="dresscode__mood-hint">
-              Olive, sage, stone, cream and brass — anywhere in here works beautifully.
-            </p>
-          </div>
-
           <div className="dresscode__notes">
             <div className="dresscode__cols">
               {columns.map((c) => (

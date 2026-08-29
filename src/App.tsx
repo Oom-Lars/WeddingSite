@@ -44,7 +44,6 @@ function App() {
         <DressCodeSection
           dressStyle={WEDDING_CONFIG.dressCode.style}
           columns={WEDDING_CONFIG.dressCode.columns}
-          palette={WEDDING_CONFIG.dressCode.palette}
           avoid={WEDDING_CONFIG.dressCode.avoid}
         />
         <PhotoGallerySection images={[...WEDDING_CONFIG.gallery]} />
