@@ -65,7 +65,7 @@ export const WEDDING_CONFIG = {
     { id: '6', src: images.gallery[5], alt: 'Running down to the sea hand in hand' },
   ],
 
-  rsvpDeadline: 'Monday, 30th October 2026',
+  rsvpDeadline: 'Wednesday, 30th October 2026',
 
   // Banking / honeymoon-fund details. Stored as discrete fragments so the page
   // can assemble them at render time instead of shipping a scrape-friendly
